@@ -1,0 +1,43 @@
+<div class="header">
+  <div *ngIf="myData" class="data-header">
+
+    <div class="list">
+      <div class="progress-list" *ngFor="let item of myData.categories; let i=index">
+        <div class="title-progress">
+          <div class="value-title">{{item.value}}</div>
+          <div class="progress">
+            <div class="progress-bar{{i+1}}" role="progressbar" [attr.aria-valuenow]="item.value" [style.width]="(item.value/item.maxValue)*100 + '%'"
+              aria-valuemin="0" [attr.aria-valuemax]="item.maxValue">
+            </div>
+          </div>
+        </div>
+
+        <div class="title">{{item.Title}}</div>
+      </div>
+    </div>
+
+    <div class="circle">
+      <h1>circle1</h1>
+      <circle-progress [percent]="100*finished/total" [subtitleFormat]="formatSubtitle" [backgroundOpacity]="1"
+        [toFixed]="0" [maxPercent]="100" [unitsColor]="'#ffffff'" [outerStrokeGradient]=true [outerStrokeColor]="'#df20ab'"
+        [outerStrokeGradientStopColor]="'#400080'" [titleColor]="'#ffffff'" [subtitleColor]="'#ffffff'"
+        [animationDuration]="500" [showBackground]=false [showInnerStroke]=false [showUnits]=false [showTitle]=false
+        [subtitleFontSize]=15 [radius]=50></circle-progress>
+    </div>
+
+
+    <div class="circle">
+      <h1>circle2</h1>
+      <circle-progress [backgroundOpacity]="1" [toFixed]="0" [maxPercent]="100" [unitsColor]="'#ffffff'"
+        [outerStrokeGradient]=true [outerStrokeColor]="'#ffffff'" [outerStrokeGradientStopColor]="'#aaffff'"
+        [titleColor]="'#ffffff'" [subtitleColor]="'#ffffff'" [animationDuration]="500" [showBackground]=false
+        [showInnerStroke]=false [percent]="myData.circle2.value" [titleFontSize]=15 [unitsFontSize]=15 [radius]=50></circle-progress>
+    </div>
+  </div>
+
+  <div class="list-year">
+    <div (click)="click(year)" class="year" *ngFor=" let year of [2017,2018,2019,2020]">
+      {{year}}
+    </div>
+  </div>
+</div>
